@@ -1,0 +1,6 @@
+---
+- name: Ensure auditbeat service auto-starts and is running
+  service:
+    name: auditbeat
+    state: started
+    enabled: true

@@ -1,0 +1,25 @@
+---
+- name: Copying Elasticsearch GPG Key
+  copy:
+    src: GPG-KEY-elasticsearch
+    dest: /tmp/GPG-KEY-elasticsearch
+
+- name: Trust Elasticsearch GPG Key in RPM
+  rpm_key:
+    key: /tmp/GPG-KEY-elasticsearch
+    state: present
+ 
+- name: Add Elastic yum repo
+  yum_repository:
+    name: "{{ 'auditbeat-'+major_ver }}"
+    description: "Elastic repository for {{ major_ver }} packages"
+    baseurl: "{{ repo_url+'/'+major_ver+'/yum' }}"
+    enabled: true
+    gpgkey: "{{ repo_key }}"
+    gpgcheck: true
+    state: present
+
+- name: Install auditbeat package
+  package:
+    name: "{{ 'auditbeat-'+minor_ver|string }}"
+    state: present

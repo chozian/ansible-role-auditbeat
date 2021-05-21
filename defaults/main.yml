@@ -1,0 +1,12 @@
+---
+# defaults file for ansible-role-auditbeat
+repo_key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+repo_url: https://artifacts.elastic.co/packages
+
+major_ver: 7.x
+minor_ver: 7.12.1
+
+setup_kibana_host: https://kibana-host.domain:5601
+output_elasticsearch_hosts: '["192.168.1.101:9200", "192.168.1.102:9200", "192.168.1.103:9200"]'
+output_elasticsearch_username: username
+output_elasticsearch_password: password

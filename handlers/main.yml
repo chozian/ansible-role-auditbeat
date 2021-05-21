@@ -1,0 +1,6 @@
+---
+# handlers file for ansible-role-auditbeat
+- name: restart auditbeat
+  service:
+    name: auditbeat
+    state: restarted

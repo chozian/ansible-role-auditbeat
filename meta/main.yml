@@ -1,0 +1,24 @@
+---
+galaxy_info:
+  role_name: auditbeat
+  author: Chris Hozian
+  description: Auditbeat for Linux
+  license: BSD-3-Clause
+  min_ansible_version: 2.11
+
+  platforms:
+  - name: EL
+    versions:
+    - 7
+    
+  galaxy_tags:
+    - auditing
+    - monitoring
+    - logging
+    - beats
+    - elk
+    - elasticsearch
+    - logstash
+    - kibana
+
+dependencies: []

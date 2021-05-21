@@ -1,0 +1,21 @@
+---
+- name: Ensure auditbeat config directory exists
+  file:
+    path: /etc/auditbeat
+    state: directory
+
+- name: Copy auditbeat configuration
+  template:
+    src: etc/auditbeat/auditbeat.yml.j2
+    dest: /etc/auditbeat/auditbeat.yml
+    owner: root
+    group: root
+    mode: 0600
+  notify: restart auditbeat
+
+- name: Copy SSL CA cert for auditbeat
+  copy:
+    src: elasticsearch-ca.pem
+    dest: /etc/auditbeat/elasticsearch-ca.pem
+    mode: 0644
+  notify: restart auditbeat
